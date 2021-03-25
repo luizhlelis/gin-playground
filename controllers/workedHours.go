@@ -1,11 +1,11 @@
 package controllers
 
-import(
-	"github.com/gin-gonic/gin"
+import (
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-func postWorkedHours(ginContext *gin.Context)
-{
+func PostWorkedHours(ginContext *gin.Context) {
 	ginContext.String(http.StatusOK, "Nice job!")
 }
