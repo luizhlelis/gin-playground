@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"github.com/luizhlelis/gin-playground/controllers"
+	"github.com/luizhlelis/gin-playground/src/controllers"
 	"golang.org/x/crypto/acme/autocert"
 )
 
