@@ -9,7 +9,7 @@ import (
 
 //PostWorkedHours is an API method to an employee register hours
 func PostWorkedHours(ginContext *gin.Context) {
-	var json TimeEntry
+	var json models.TimeEntry
 
 	if err := ginContext.ShouldBindJSON(&json); err != nil {
 		ginContext.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
