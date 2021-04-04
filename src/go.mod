@@ -1,4 +1,4 @@
-module github.com/luizhlelis/gin-playground/src
+module github.com/luizhlelis/gin-playground
 
 go 1.16
 

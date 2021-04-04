@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/luizhlelis/gin-playground/src/models"
+	"github.com/luizhlelis/gin-playground/models"
 )
 
 //PostWorkedHours is an API method to an employee register hours
@@ -16,5 +16,5 @@ func PostWorkedHours(ginContext *gin.Context) {
 		return
 	}
 
-	ginContext.String(http.StatusOK, "Nice job!")
+	ginContext.JSON(http.StatusOK, "Nice job!")
 }
