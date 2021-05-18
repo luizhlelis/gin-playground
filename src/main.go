@@ -2,13 +2,12 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"os"
 
-	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/luizhlelis/gin-playground/controllers"
-	"golang.org/x/crypto/acme/autocert"
 )
 
 func main() {
@@ -20,6 +19,7 @@ func main() {
 	}
 
 	hostCommonName := os.Getenv("hostCommonName")
+	serverPort := os.Getenv("hostCommonName")
 
 	if hostCommonName == "" {
 		log.Fatalf("Empty host common name")
@@ -35,11 +35,13 @@ func main() {
 		v1.POST("/workedHours", controllers.PostWorkedHours)
 	}
 
-	manager := autocert.Manager{
-		Prompt:     autocert.AcceptTOS,
-		HostPolicy: autocert.HostWhitelist(hostCommonName),
-		Cache:      autocert.DirCache("/var/www/.cache"),
-	}
+	log.Fatal(http.ListenAndServe(serverPort, router))
 
-	log.Fatal(autotls.RunWithManager(router, &manager))
+	//manager := autocert.Manager{
+	//	Prompt:     autocert.AcceptTOS,
+	//	HostPolicy: autocert.HostWhitelist(hostCommonName),
+	//	Cache:      autocert.DirCache("/var/www/.cache"),
+	//}
+
+	//log.Fatal(autotls.RunWithManager(router, &manager))
 }
