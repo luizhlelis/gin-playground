@@ -1,17 +1,19 @@
 package models
 
-// TimeEntry entry that register employee worked hors
+// TimeEntry entry that register employee worked hours
 type TimeEntry struct {
-	User     string `form:"user" json:"user" xml:"user"  binding:"required"`
-	Password string `form:"password" json:"password" xml:"password" binding:"required"`
+	TemperatureCelsius    int    `form:"temperatureCelsius" json:"temperatureCelsius" xml:"temperatureCelsius" binding:"required"`
+	TemperatureFahrenheit int    `form:"temperatureFahrenheit" json:"temperatureFahrenheit" xml:"temperatureFahrenheit" binding:"-"`
+	Summary               string `form:"summary" json:"summary" xml:"summary" binding:"required"`
 }
 
 // NewTimeEntry returns a pointer to a new TimeEntry struct
-func NewTimeEntry(user string, password string) (*TimeEntry, error) {
+func NewTimeEntry(temperatureCelsius int, summary string) (*TimeEntry, error) {
 
 	timeEntry := &TimeEntry{
-		User:     user,
-		Password:  password,
+		TemperatureCelsius:    temperatureCelsius,
+		TemperatureFahrenheit: 32 + (int)(float64(temperatureCelsius)/0.5556),
+		Summary:               summary,
 	}
 
 	return timeEntry, nil
