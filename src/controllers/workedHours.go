@@ -8,9 +8,9 @@ import (
 )
 
 func binder(objectToBind interface{}) gin.HandlerFunc {
-	return func(c *gin.Context) {
-		if err := c.BindQuery(&objectToBind); err != nil {
-			c.AbortWithStatus(http.StatusBadRequest)
+	return func(ginContext *gin.Context) {
+		if err := ginContext.BindQuery(&objectToBind); err != nil {
+			ginContext.AbortWithStatus(http.StatusBadRequest)
 			return
 		}
 	}
