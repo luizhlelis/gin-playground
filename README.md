@@ -8,7 +8,7 @@ In the [src](./src) folder, type this command to run in `debug` mode:
     go run main.go
 ```
 
-below an example of curl:
+below an example of `curl`:
 
 ```bash
 curl --request POST \
